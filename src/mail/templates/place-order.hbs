@@ -1,0 +1,55 @@
+<div
+  style="max-width: 600px; margin: auto; border: 1px solid #f5a623; padding: 20px; background-color: #fff; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); font-family: Arial, sans-serif; border-radius: 8px;"
+>
+  <div style="text-align: center; margin-bottom: 20px; background-color: #f5a623; padding: 15px; border-radius: 8px 8px 0 0; color: #fff;">
+    <h1 style="margin: 0; font-size: 24px;">Shoes DNC</h1>
+    <p style="margin: 5px 0;">Hẻm 4, Nguyễn Văn Linh, Phường Hưng Lợi, Quận Ninh Kiều, TP Cần Thơ</p>
+    <p style="margin: 5px 0;">Điện thoại: 0931015645</p>
+  </div>
+
+  <h2 style="margin-top: 20px; color: #f5a623;">Hóa Đơn</h2>
+  <p><strong>Mã hóa đơn:</strong> {{orderId}}</p>
+  <p><strong>Ngày:</strong> {{date}}</p>
+
+  <div style="margin-top: 20px; padding: 10px; border: 1px solid #f5a623; border-radius: 5px;">
+    <h3 style="color: #f5a623;">Thông Tin Khách Hàng</h3>
+    <p><strong>Tên:</strong> {{customer.name}}</p>
+    <p><strong>Địa chỉ:</strong> {{customer.address}}</p>
+    <p><strong>Điện thoại:</strong> {{customer.phone_number}}</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <h3 style="color: #f5a623;">Chi Tiết Sản Phẩm</h3>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="background-color: #f5a623; color: #fff;">
+          <th style="border: 1px solid #f5a623; padding: 10px; text-align: left;">Tên Sản Phẩm</th>
+          <th style="border: 1px solid #f5a623; padding: 10px; text-align: center;">Số Lượng</th>
+          <th style="border: 1px solid #f5a623; padding: 10px; text-align: center;">Giảm Giá</th>
+          <th style="border: 1px solid #f5a623; padding: 10px; text-align: right;">Giá</th>
+          <th style="border: 1px solid #f5a623; padding: 10px; text-align: right;">Tổng</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td style="border: 1px solid #f5a623; padding: 10px;">{{this.product_id.name}}</td>
+          <td style="border: 1px solid #f5a623; padding: 10px; text-align: center;">{{this.quantity}}</td>
+          <td style="border: 1px solid #f5a623; padding: 10px; text-align: center;">{{this.product_id.sale}}%</td>
+          <td style="border: 1px solid #f5a623; padding: 10px; text-align: right;">{{formatNumber this.product_id.price}} VND</td>
+
+          <td style="border: 1px solid #f5a623; padding: 10px; text-align: right;">{{formatNumber this.total}} VND</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="text-align: right; margin-top: 20px;">
+    <p style="font-size: 18px; color: #f5a623;"><strong>Tổng Cộng:</strong> {{formatNumber total}} VND</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <p style="color: #f5a623;">Cảm ơn bạn đã mua hàng!</p>
+  </div>
+</div>
